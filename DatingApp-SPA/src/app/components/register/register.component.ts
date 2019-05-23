@@ -10,6 +10,7 @@ export class RegisterComponent implements OnInit {
   @Output() cancelarRegistro = new EventEmitter();
   model: any = {};
 
+  // tslint:disable-next-line:variable-name
   constructor(private _service: AuthService) {}
 
   ngOnInit() {}
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
   register() {
    this._service.register(this.model).subscribe( data => {
      console.log('ok');
-   }, error => console.log('error'));
+   }, error => console.log(error));
   }
 
   cancel() {

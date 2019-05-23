@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DatingApp.API.Data;
 using DatingApp.API.DTO;
 using DatingApp.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace DatingApp.API.Controllers
 {
 
+   
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -25,30 +27,30 @@ namespace DatingApp.API.Controllers
             this.repo = _repo;
 
         }
-
+        
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserRegisterDTO user)
+        public async Task<IActionResult> Register(UserRegisterDTO userForRegisterDto)
         {
-            // validar peticion
-            user.Username = user.Username.ToLower();
+            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
-            if (await repo.userExists(user.Username))
-            {
-                return BadRequest("Usuario ya existe.");
-            }
+            if (await repo.userExists(userForRegisterDto.Username))
+                return BadRequest("Username already exists");
 
-            var usuarioToCreate = new User
+            var userToCreate = new User
             {
-                Username = user.Username
+                Username = userForRegisterDto.Username
             };
 
-            var createdUser = await repo.Register(usuarioToCreate, user.Password);
+            var createdUser = await repo.Register(userToCreate, userForRegisterDto.Password);
+
             return StatusCode(201);
         }
 
+        
         [HttpPost("login")]
         public async Task<IActionResult> login(UserForLoginDTO userRegisterDTO)
         {
+            
             var userFromRepo = await repo.Login(userRegisterDTO.Username.ToLower(), userRegisterDTO.Password);
 
             if (userFromRepo == null)
@@ -76,7 +78,8 @@ namespace DatingApp.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
         }
