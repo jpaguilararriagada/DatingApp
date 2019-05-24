@@ -12,6 +12,13 @@ export class ErrorInterceptor implements HttpInterceptor {
                     if (error.status === 401) {
                         return throwError(error.statusText);
                     }
+                // bad request
+                    if (error.status === 400) {
+                        if (error.error.length > 0) {
+                            return throwError(error.error);
+                        }
+                    }
+
                     const applicationError = error.headers.get('Application-Error');
                     if (applicationError) {
                         console.error(applicationError);
