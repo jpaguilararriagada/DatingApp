@@ -12,7 +12,7 @@
         "City": "Bancroft",
         "Country": "Gambia",
         "Photos": [{
-            "url": "https://randomuser.me/api/portraits/male/19.jpg",
+            "url": "https://randomuser.me/api/portraits/men/19.jpg",
             "isMain": true,
             "description": "Incididunt qui excepteur est aute quis cillum commodo non."
         }]
@@ -31,7 +31,7 @@
         "City": "Efland",
         "Country": "Botswana",
         "Photos": [{
-            "url": "https://randomuser.me/api/portraits/male/91.jpg",
+            "url": "https://randomuser.me/api/portraits/men/91.jpg",
             "isMain": true,
             "description": "Lorem ipsum ullamco ex eiusmod occaecat eiusmod esse ad et."
         }]
@@ -50,7 +50,7 @@
         "City": "Carbonville",
         "Country": "China",
         "Photos": [{
-            "url": "https://randomuser.me/api/portraits/male/24.jpg",
+            "url": "https://randomuser.me/api/portraits/men/24.jpg",
             "isMain": true,
             "description": "Cupidatat consectetur laborum elit deserunt sunt id deserunt eu adipisicing ut cupidatat velit."
         }]
@@ -69,7 +69,7 @@
         "City": "Kenmar",
         "Country": "Guadeloupe",
         "Photos": [{
-            "url": "https://randomuser.me/api/portraits/male/62.jpg",
+            "url": "https://randomuser.me/api/portraits/men/62.jpg",
             "isMain": true,
             "description": "Enim laboris sint anim elit culpa anim sunt sit non et reprehenderit aute qui."
         }]
@@ -88,7 +88,7 @@
         "City": "Baker",
         "Country": "Slovak Republic",
         "Photos": [{
-            "url": "https://randomuser.me/api/portraits/male/30.jpg",
+            "url": "https://randomuser.me/api/portraits/men/30.jpg",
             "isMain": true,
             "description": "Elit qui amet mollit ea fugiat veniam eiusmod consequat irure elit."
         }]
