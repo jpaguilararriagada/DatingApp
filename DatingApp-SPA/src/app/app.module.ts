@@ -1,6 +1,6 @@
 import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,6 +13,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
 import { AlertifyService } from './services/alertify.service';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 // BOOTSTRAP
 
 import { BsDropdownModule } from 'ngx-bootstrap';
@@ -35,10 +37,11 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './components/members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import {TimeAgoPipe} from 'time-ago-pipe';
 import { defineLocale } from 'ngx-bootstrap';
 import { esLocale } from 'ngx-bootstrap';
 defineLocale('es', esLocale);
+registerLocaleData(localeEs, 'es');
 
 
 export function tokenGetter() {
@@ -59,7 +62,8 @@ export function tokenGetter() {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,8 @@ export function tokenGetter() {
     UserService,
     MemberDetailResolver,
     MemberEditResolver,
-    PreventUnsavedChangesGuard
+    PreventUnsavedChangesGuard,
+    { provide: LOCALE_ID, useValue: 'es'}
   ],
   bootstrap: [AppComponent]
 })
