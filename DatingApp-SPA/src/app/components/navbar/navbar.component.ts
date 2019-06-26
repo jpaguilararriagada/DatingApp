@@ -12,11 +12,13 @@ import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group
 export class NavbarComponent implements OnInit {
 
   model: any = {};
+  photoUrl: string;
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) {
 
   }
 
   ngOnInit() {
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   login() {
@@ -34,7 +36,10 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
+    this.authService.decodedToken = null;
+    this.authService.currentUser = null;
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.alertify.message('Hasta luego!');
     this.router.navigate(['/home']);
     this.model = {};
