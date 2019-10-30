@@ -40,6 +40,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import { defineLocale } from 'ngx-bootstrap';
 import { esLocale } from 'ngx-bootstrap';
+import { ListsResolver } from './_resolvers/lists.resolver';
 defineLocale('es', esLocale);
 registerLocaleData(localeEs, 'es');
 
@@ -96,6 +97,7 @@ export function tokenGetter() {
     UserService,
     MemberDetailResolver,
     MemberEditResolver,
+    ListsResolver,
     PreventUnsavedChangesGuard,
     { provide: LOCALE_ID, useValue: 'es'}
   ],
