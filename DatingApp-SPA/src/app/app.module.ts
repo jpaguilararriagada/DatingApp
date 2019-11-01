@@ -41,6 +41,8 @@ import {TimeAgoPipe} from 'time-ago-pipe';
 import { defineLocale } from 'ngx-bootstrap';
 import { esLocale } from 'ngx-bootstrap';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessagesResolver } from './_resolvers/messages-resolver';
+import { MemberMessagesComponent } from './components/members/member-messages/member-messages.component';
 defineLocale('es', esLocale);
 registerLocaleData(localeEs, 'es');
 
@@ -64,6 +66,7 @@ export function tokenGetter() {
     MemberDetailComponent,
     MemberEditComponent,
     PhotoEditorComponent,
+    MemberMessagesComponent,
     TimeAgoPipe
   ],
   imports: [
@@ -98,6 +101,7 @@ export function tokenGetter() {
     MemberDetailResolver,
     MemberEditResolver,
     ListsResolver,
+    MessagesResolver,
     PreventUnsavedChangesGuard,
     { provide: LOCALE_ID, useValue: 'es'}
   ],
